@@ -15,6 +15,8 @@ namespace Movement
         [SerializeField] private float groundCheckRadius = 0.2f;
         [SerializeField] private LayerMask groundLayer;
 
+        [SerializeField] private Transform playerCamera;
+
         public Rigidbody rb;
 
         private void OnEnable()
@@ -39,16 +41,50 @@ namespace Movement
             Move();
         }
 
+        /*
         private void Move()
         {
             var input = move.action.ReadValue<Vector2>().normalized;
 
+            Vector3 direction = transform.TransformDirection(
+                new Vector3(input.x, 0, input.y)
+            );
+
             rb.linearVelocity = new Vector3(
-                input.x * moveSpeed,
+                direction.x * moveSpeed,
                 rb.linearVelocity.y,
-                input.y * moveSpeed
+                direction.z * moveSpeed
             );
         }
+        */
+
+
+        private void Move()
+        {
+            var input = move.action.ReadValue<Vector2>().normalized;
+
+            // Blickrichtung der Kamera ermitteln
+            Vector3 forward = playerCamera.forward;
+            Vector3 right = playerCamera.right;
+
+            // Vertikale Bewegung verhindern
+            forward.y = 0;
+            right.y = 0;
+
+            forward.Normalize();
+            right.Normalize();
+
+            // Bewegungsrichtung relativ zur Kamera berechnen
+            Vector3 direction = forward * input.y + right * input.x;
+
+            rb.linearVelocity = new Vector3(
+                direction.x * moveSpeed,
+                rb.linearVelocity.y,
+                direction.z * moveSpeed
+            );
+        }
+
+
 
         /*
         private void Jump()

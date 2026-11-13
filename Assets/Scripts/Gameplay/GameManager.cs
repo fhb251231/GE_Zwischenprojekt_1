@@ -43,9 +43,13 @@ public class GameManager : MonoBehaviour
     public void PauseGame()
     {
         Time.timeScale = 0;
-        
+
         if (pauseMenu != null)
             pauseMenu.SetActive(true);
+
+        // Maus entsperren und sichtbar machen
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public void ResumeGame()
@@ -54,6 +58,10 @@ public class GameManager : MonoBehaviour
 
         if (pauseMenu != null)
             pauseMenu.SetActive(false);
+
+        //Maus wieder sperren und verstecken
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     public void RestartGame()
