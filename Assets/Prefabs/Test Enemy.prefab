@@ -130,6 +130,7 @@ MonoBehaviour:
   m_Graph: {fileID: -7024782117480991236, guid: 305098c1be7c80e449b0359bd8a1771e, type: 2}
   m_BlackboardVariableOverridesList:
   - rid: 5960033907862143256
+  - rid: 5960033929688252416
   m_OriginalGraph: {fileID: 0}
   m_IsInitialised: 0
   m_IsStarted: 0
@@ -144,3 +145,11 @@ MonoBehaviour:
           m_Value1: 0
         Name: Self
         m_Value: {fileID: 8103769680851398254}
+    - rid: 5960033929688252416
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 16664555053577169713
+          m_Value1: 12255861471979731180
+        Name: Target
+        m_Value: {fileID: 0}

@@ -160,6 +160,12 @@ MonoBehaviour:
   jump: {fileID: -2099379676528639254, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   moveSpeed: 5
   jumpForce: 5
+  groundCheck: {fileID: 0}
+  groundCheckRadius: 0.2
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  playerCamera: {fileID: 0}
   rb: {fileID: 3758905231172766281}
 --- !u!1 &1283921768794957424
 GameObject:
@@ -189,7 +195,7 @@ Transform:
   m_GameObject: {fileID: 1283921768794957424}
   serializedVersion: 2
   m_LocalRotation: {x: 0.10930061, y: -0, z: -0, w: 0.9940088}
-  m_LocalPosition: {x: -0.24, y: 1.58, z: -4.08}
+  m_LocalPosition: {x: -0.24, y: 1.63, z: -4.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
