@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
@@ -8,12 +6,16 @@ public class GameManager : MonoBehaviour
 {
 
    [SerializeField] private InputActionReference pause;
+
    [SerializeField] private GameObject pauseMenu;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
-        
+        Time.timeScale = 1;
+
+        if (pauseMenu != null)
+            pauseMenu.SetActive(false);
     }
 
     // Update is called once per frame
@@ -25,13 +27,17 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         pause.action.Enable();
+        
         pause.action.performed += HandlePauseButtonPressed;
+
     }
 
     private void OnDisable()
     {
         pause.action.performed -= HandlePauseButtonPressed;
+
         pause.action.Disable();
+
     }
 
     public void PauseGame()
@@ -47,7 +53,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
 
         if (pauseMenu != null)
-            pauseMenu.SetActive(true);
+            pauseMenu.SetActive(false);
     }
 
     public void RestartGame()
@@ -78,6 +84,16 @@ public class GameManager : MonoBehaviour
         {
             PauseGame();
         }
+    }
+
+    private void HandleRestartButtonPressed(InputAction.CallbackContext context)
+    {
+        RestartGame();
+    }
+
+    private void HandleQuitButtonPressed(InputAction.CallbackContext context)
+    {
+        QuitGame();
     }
 }
 

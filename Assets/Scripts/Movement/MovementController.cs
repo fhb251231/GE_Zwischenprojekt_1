@@ -1,5 +1,3 @@
-using System;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -31,7 +29,7 @@ namespace Movement
 
         private void OnDisable()
         {
-            jump.action.performed += OnJump;
+            jump.action.performed -= OnJump;
 
             move.action.Disable();
             jump.action.Disable();
