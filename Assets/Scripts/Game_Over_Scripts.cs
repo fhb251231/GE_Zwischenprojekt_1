@@ -13,4 +13,9 @@ public class Game_Over_Scripts : MonoBehaviour
     {
     SceneManager.LoadScene("AI Behavior");    
     }
+
+    public void ExitButton()
+    {
+        Application.Quit();
+    }
 }
