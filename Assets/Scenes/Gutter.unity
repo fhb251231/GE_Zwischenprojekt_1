@@ -452,6 +452,7 @@ MonoBehaviour:
   pause: {fileID: 6267892265675953991, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   pauseMenu: {fileID: 1006216778}
   winMenu: {fileID: 528645852}
+  loseMenu: {fileID: 1694651799}
 --- !u!4 &121966755
 Transform:
   m_ObjectHideFlags: 0
@@ -2093,9 +2094,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1694651801}
-        m_TargetAssemblyTypeName: Game_Over_Scripts, Assembly-CSharp
-        m_MethodName: ExitButton
+      - m_Target: {fileID: 121966754}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3372,7 +3373,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &528645853
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5180,6 +5181,14 @@ PrefabInstance:
       propertyPath: 'managedReferences[5960033929688252417].m_Value.Array.data[1]'
       value: 
       objectReference: {fileID: 106551816}
+    - target: {fileID: 4522774760693354282, guid: a7293c1565f4a68439166f29166a24be, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1596909853}
+    - target: {fileID: 4522774760693354282, guid: a7293c1565f4a68439166f29166a24be, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 121966754}
     - target: {fileID: 4836731754503441770, guid: a7293c1565f4a68439166f29166a24be, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1737.1624
@@ -5218,6 +5227,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4836731754503441770, guid: a7293c1565f4a68439166f29166a24be, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7709455295159478844, guid: a7293c1565f4a68439166f29166a24be, type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8103769680851398254, guid: a7293c1565f4a68439166f29166a24be, type: 3}
@@ -7097,7 +7110,7 @@ GameObject:
   - component: {fileID: 937970885}
   - component: {fileID: 937970889}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Win Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11635,9 +11648,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1694651801}
-        m_TargetAssemblyTypeName: Game_Over_Scripts, Assembly-CSharp
-        m_MethodName: RestartButton
+      - m_Target: {fileID: 121966754}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: RestartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12779,6 +12792,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5137983576888036035, guid: 55b3704bf02cbd04f9259efb7d5c0cd8, type: 3}
   m_PrefabInstance: {fileID: 1596909846}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1596909853 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3790099386525621751, guid: 55b3704bf02cbd04f9259efb7d5c0cd8, type: 3}
+  m_PrefabInstance: {fileID: 1596909846}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1629204875
 Mesh:
   m_ObjectHideFlags: 0
@@ -13604,7 +13622,7 @@ GameObject:
   - component: {fileID: 1694651802}
   - component: {fileID: 1694651801}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Lose Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13645,6 +13663,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f58df41b6774eb642913f057ac32ee14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game_Over_Scripts
+  gameManager: {fileID: 0}
+  target: {fileID: 0}
+  detectionRange: 1.5
 --- !u!114 &1694651802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18079,6 +18100,10 @@ PrefabInstance:
     - target: {fileID: 3986181303191819490, guid: aad80f18a36835641b9c1594aa492d3f, type: 3}
       propertyPath: m_Name
       value: Running Level
+      objectReference: {fileID: 0}
+    - target: {fileID: 3986181303191819490, guid: aad80f18a36835641b9c1594aa492d3f, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4006327087412086163, guid: aad80f18a36835641b9c1594aa492d3f, type: 3}
       propertyPath: m_Mesh
