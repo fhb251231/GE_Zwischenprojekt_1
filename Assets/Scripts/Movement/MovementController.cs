@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
+using TMPro;
 
 namespace Movement
 {
@@ -17,7 +19,15 @@ namespace Movement
 
         [SerializeField] private Transform playerCamera;
 
+        [SerializeField] private TMP_Text boostTimerText;
+
         public Rigidbody rb;
+
+        private void Start()
+        {
+            if (boostTimerText != null)
+                boostTimerText.gameObject.SetActive(false);
+        }
 
         private void OnEnable()
         {
@@ -78,9 +88,9 @@ namespace Movement
             Vector3 direction = forward * input.y + right * input.x;
 
             rb.linearVelocity = new Vector3(
-                direction.x * moveSpeed,
+                direction.x * moveSpeed * speedMultiplier,
                 rb.linearVelocity.y,
-                direction.z * moveSpeed
+                direction.z * moveSpeed * speedMultiplier
             );
         }
 
@@ -115,6 +125,52 @@ namespace Movement
          private void OnJump(InputAction.CallbackContext context)
         {
             Jump();
+        }
+
+        private float speedMultiplier = 1f;
+        private Coroutine speedBoostRoutine;
+
+
+        public void ActivateSpeedBoost(float multiplier, float duration)
+        {
+            if (speedBoostRoutine != null)
+                StopCoroutine(speedBoostRoutine);
+
+            speedBoostRoutine = StartCoroutine(
+                SpeedBoostRoutine(multiplier, duration)
+            );
+        }
+
+        
+        private IEnumerator SpeedBoostRoutine(float multiplier, float duration)
+        {
+            speedMultiplier = multiplier;
+
+            float remainingTime = duration;
+
+            // Timer anzeigen
+            if (boostTimerText != null)
+                boostTimerText.gameObject.SetActive(true);
+
+            while (remainingTime > 0)
+            {
+                // Verbleibende Zeit anzeigen
+                if (boostTimerText != null)
+                    boostTimerText.text = "Speed Boost: " +
+                        remainingTime.ToString("F1") + "s";
+
+                remainingTime -= Time.deltaTime;
+
+                yield return null;
+            }
+
+            // Boost beenden
+            speedMultiplier = 1f;
+
+            if (boostTimerText != null)
+                boostTimerText.gameObject.SetActive(false);
+
+            speedBoostRoutine = null;
         }
     }
 }
