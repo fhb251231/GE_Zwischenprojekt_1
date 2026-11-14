@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 
    [SerializeField] private GameObject pauseMenu;
    [SerializeField] private GameObject winMenu;
+   [SerializeField] private GameObject loseMenu;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
@@ -43,7 +44,20 @@ public class GameManager : MonoBehaviour
 
     public void WinGame()
     {
+        Time.timeScale = 0;
+
         winMenu.SetActive(true);
+        
+        // Maus entsperren und sichtbar machen
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    public void LoseGame()
+    {
+        Time.timeScale = 0;
+
+        loseMenu.SetActive(true);
         
         // Maus entsperren und sichtbar machen
         Cursor.lockState = CursorLockMode.None;
