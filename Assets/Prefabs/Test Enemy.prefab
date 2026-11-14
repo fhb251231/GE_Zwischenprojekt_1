@@ -13,8 +13,7 @@ GameObject:
   - component: {fileID: 7749182996037442598}
   - component: {fileID: 7709455295159478844}
   - component: {fileID: 1578278255864122160}
-  - component: {fileID: -8759175215819109283}
-  - component: {fileID: 4522774760693354282}
+  - component: {fileID: 6047245146122302210}
   m_Layer: 0
   m_Name: Test Enemy
   m_TagString: Untagged
@@ -70,7 +69,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 0aa37164acf594e03876b4e0b590280e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -109,7 +108,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -155,7 +154,7 @@ MonoBehaviour:
           m_Value1: 12255861471979731180
         Name: Target
         m_Value: {fileID: 0}
---- !u!195 &-8759175215819109283
+--- !u!195 &6047245146122302210
 NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -177,18 +176,3 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &4522774760693354282
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8103769680851398254}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f58df41b6774eb642913f057ac32ee14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Game_Over_Scripts
-  gameManager: {fileID: 0}
-  target: {fileID: 0}
-  detectionRange: 1.5
